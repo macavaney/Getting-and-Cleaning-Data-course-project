@@ -2,7 +2,7 @@ url<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%2
 download.file(url,destfile="UCI HAR Dataset.zip")
 unzip("UCI HAR Dataset.zip",exdir="UCI HAR Dataset")
 library(dplyr)
-path<-"C:/Users/kelly/Documents/Coursera/03 Getting and cleaning data/UCI HAR Dataset/UCI HAR Dataset"
+path<-paste(getwd(),"UCI HAR Dataset/UCI HAR Dataset",sep="/")
 setwd(path)
 features<-read.table("features.txt")
 activity_labels<-read.table("activity_labels.txt")
