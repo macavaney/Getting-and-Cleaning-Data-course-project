@@ -1,0 +1,26 @@
+url<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(url,destfile="UCI HAR Dataset.zip")
+unzip("UCI HAR Dataset.zip",exdir="UCI HAR Dataset")
+library(dplyr)
+path<-"C:/Users/kelly/Documents/Coursera/03 Getting and cleaning data/UCI HAR Dataset/UCI HAR Dataset"
+setwd(path)
+features<-read.table("features.txt")
+activity_labels<-read.table("activity_labels.txt")
+setwd(paste(path,"test",sep="/"))
+x_test<-read.table("X_test.txt")
+y_test<-read.table("Y_test.txt")
+subject_test<-read.table("subject_test.txt")
+setwd(paste(path,"train",sep="/"))
+x_train<-read.table("X_train.txt")
+y_train<-read.table("Y_train.txt")
+subject_train<-read.table("subject_train.txt")
+test<-cbind(subject_test,y_test,x_test)
+train<-cbind(subject_train,y_train,x_train)
+dat<-tbl_df(rbind(test,train))
+cols<-c("Subject","Activity",as.character(features$V2))
+cols<-make.names(names=cols,unique=TRUE,allow_=TRUE)
+colnames(dat)<-cols
+dat<-select(dat,Subject,Activity,contains("mean"),contains("std"))
+dat$Activity<-activity_labels$V2[dat$Activity]
+dat<-group_by(dat,Subject,Activity)
+dat2<-summarize_each(dat,funs(mean))
