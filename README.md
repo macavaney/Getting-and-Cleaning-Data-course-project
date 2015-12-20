@@ -9,7 +9,7 @@ This repo contains the following files:
 * 'Codebook.md'
 * 'run_analysis.R': downloads data, cleans, and combines to result in the tidy data described above.
 * 'tidy data.txt': sample output from run_analysis.R
-#
+
 The run_analysis code does the following to create the tidy dataset:
 * Download and unzip the necessary file
 * Combine the data files into one big table data frame
