@@ -12,8 +12,8 @@ This repo contains the following files:
 The run_analysis code does the following to create the tidy dataset:
 * Download and unzip the necessary file
 * Combine the data files into one big table data frame
-* Assign column headers, each with a unique name
 * Extract only measurements on the mean and standard deviation of each variable
+* Assign column headers, each with a unique and descriptive name
 * Assign descriptive names to the activities
 * Create a second data set that contains the mean of each variable
 
